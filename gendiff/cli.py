@@ -1,7 +1,15 @@
+"""Parse command-line arguments."""
+
 import argparse
 
 
 def parse_cli_args():
+    """
+    Parse command line arguments.
+
+    Returns:
+        argparse.Namespace object with cli arguments
+    """
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.',
     )

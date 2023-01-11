@@ -1,8 +1,14 @@
+"""Generate diff of two files."""
+
 from gendiff.cli import parse_cli_args
+from gendiff.gendiff import generate_diff
 
 
 def main():
-    parse_cli_args()
+    """Generate diff of two files."""
+    args = parse_cli_args()
+    diff = generate_diff(args.first_file, args.second_file)
+    print(diff)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,21 @@
 install:
 	poetry install
 
-build:
+test:
+	poetry run pytest
+
+lint:
+	poetry run flake8 gendiff
+
+isort:
+	poetry run isort gendiff
+
+selfcheck:
+	poetry check
+
+check: selfcheck test lint
+
+build: check
 	poetry build
 
 publish:
@@ -10,5 +24,4 @@ publish:
 package-install:
 	python3 -m pip install --user dist/*.whl
 
-lint:
-	poetry run flake8 gendiff
+.PHONY: install test lint selfcheck check build publish package-install
