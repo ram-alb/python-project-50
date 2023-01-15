@@ -2,7 +2,7 @@
 
 import itertools
 
-from gendiff.read_file import read_json
+from gendiff.read_file import read_file
 
 
 def get_value(dictionary, key):
@@ -57,8 +57,8 @@ def generate_diff(file1_path, file2_path):
     Returns:
         str: two files diff
     """
-    json_obj1 = read_json(file1_path)
-    json_obj2 = read_json(file2_path)
+    json_obj1 = read_file(file1_path)
+    json_obj2 = read_file(file2_path)
 
     all_keys = set(json_obj1) | set(json_obj2)
     diff_list = []

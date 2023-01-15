@@ -3,18 +3,14 @@
 from gendiff.gendiff import generate_diff
 
 
-def test_generate_diff():
+def test_generate_diff_flat():
     """Test generate_diff function."""
-    file1_path = 'tests/fixtures/file1.json'
-    file2_path = 'tests/fixtures/file2.json'
+    expected = open('tests/fixtures/expected_flat_diff.txt').read()
 
-    expected = """{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}"""
+    file1_json = 'tests/fixtures/file1.json'
+    file2_json = 'tests/fixtures/file2.json'
+    assert generate_diff(file1_json, file2_json) == expected
 
-    assert generate_diff(file1_path, file2_path) == expected
+    file1_yaml = 'tests/fixtures/file1.yml'
+    file2_yaml = 'tests/fixtures/file2.yml'
+    assert generate_diff(file1_yaml, file2_yaml) == expected
