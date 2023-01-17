@@ -12,12 +12,14 @@ PyYAML = "^6.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
+gen-diff = "gendiff.scripts.gen_diff:main"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
 ipython = "^8.8.0"
-wemake-python-styleguide = "^0.17.0"
 pytest-cov = "^4.0.0"
+flake8 = "^6.0.0"
+isort = "^5.11.4"
 
 [build-system]
 requires = ["poetry-core"]

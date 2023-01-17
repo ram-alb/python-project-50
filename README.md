@@ -11,3 +11,6 @@
 
 ### Compare two flat yaml files:
 [![asciicast](https://asciinema.org/a/551701.svg)](https://asciinema.org/a/551701)
+
+### Compare two nested files:
+[![asciicast](https://asciinema.org/a/552158.svg)](https://asciinema.org/a/552158)

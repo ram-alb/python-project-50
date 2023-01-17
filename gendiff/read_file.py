@@ -4,13 +4,13 @@ import json
 import os
 import pathlib
 
-from yaml import Loader
+from yaml import CLoader as Loader
 from yaml import load as yaml_load
 
 
 def read_json(file_path):
     """
-    Read json files.
+    Read json file.
 
     Args:
         file_path (str): json file path

@@ -1,0 +1,1 @@
+"""Format diff to string."""
