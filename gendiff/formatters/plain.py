@@ -17,7 +17,9 @@ def stringify(val):
         return '[complex value]'
     if val in {'true', 'false', 'null'}:
         return val
-    return f"'{val}'"
+    if isinstance(val, str):
+        return f"'{val}'"
+    return val
 
 
 def get_plain_item(diff_item, ancestry):
