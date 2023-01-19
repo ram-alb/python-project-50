@@ -6,14 +6,17 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7b02bc2bb1477f779327/maintainability)](https://codeclimate.com/github/ram-alb/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7b02bc2bb1477f779327/test_coverage)](https://codeclimate.com/github/ram-alb/python-project-50/test_coverage)
 
-### Compare two flat json files:
+### Stylish diff of two flat json files:
 [![asciicast](https://asciinema.org/a/550914.svg)](https://asciinema.org/a/550914)
 
-### Compare two flat yaml files:
+### Stylish diff of two flat yaml files:
 [![asciicast](https://asciinema.org/a/551701.svg)](https://asciinema.org/a/551701)
 
-### Compare two nested files:
+### Stylish diff of two nested files:
 [![asciicast](https://asciinema.org/a/552158.svg)](https://asciinema.org/a/552158)
 
-### Compare two files and get diff in plain format:
+### Plain diff of two files:
 [![asciicast](https://asciinema.org/a/552899.svg)](https://asciinema.org/a/552899)
+
+### JSON diff of two files:
+[![asciicast](https://asciinema.org/a/552911.svg)](https://asciinema.org/a/552911)
