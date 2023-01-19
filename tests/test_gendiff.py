@@ -32,7 +32,7 @@ def test_generate_diff_nested():
 def test_generate_diff_plain():
     """Test generate_diff function with plain output."""
     expected = open('tests/fixtures/expected_plain_diff.txt').read()
-    
+
     assert generate_diff(file1_json, file2_json, 'plain') == expected
     assert generate_diff(file1_yaml, file2_yaml, 'plain') == expected
 
@@ -40,6 +40,6 @@ def test_generate_diff_plain():
 def test_generate_diff_json():
     """Test generate_diff function with json output."""
     expected = open('tests/fixtures/json_diff.txt').read()
-    
+
     assert generate_diff(file1_json, file2_json, 'json') == expected
     assert generate_diff(file1_yaml, file2_yaml, 'json') == expected
