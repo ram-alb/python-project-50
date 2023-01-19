@@ -1,4 +1,4 @@
-"""Format diff in stylish format."""
+"""Format diff to stylish format."""
 
 import itertools
 from operator import itemgetter

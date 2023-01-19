@@ -27,3 +27,15 @@ def test_generate_diff_nested():
     file1_yaml = 'tests/fixtures/nested1.yml'
     file2_yaml = 'tests/fixtures/nested2.yml'
     assert generate_diff(file1_yaml, file2_yaml) == expected
+
+
+def test_generate_diff_plain():
+    expected = open('tests/fixtures/expected_plain_diff.txt').read()
+    
+    file1_json = 'tests/fixtures/nested1.json'
+    file2_json = 'tests/fixtures/nested2.json'
+    assert generate_diff(file1_json, file2_json, 'plain') == expected
+
+    file1_yaml = 'tests/fixtures/nested1.yml'
+    file2_yaml = 'tests/fixtures/nested2.yml'
+    assert generate_diff(file1_yaml, file2_yaml, 'plain') == expected

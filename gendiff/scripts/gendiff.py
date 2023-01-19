@@ -7,7 +7,7 @@ from gendiff.gendiff import generate_diff
 def main():
     """Generate diff of two files."""
     args = parse_cli_args()
-    diff = generate_diff(args.first_file, args.second_file)
+    diff = generate_diff(args.first_file, args.second_file, args.format)
     print(diff)
 
 

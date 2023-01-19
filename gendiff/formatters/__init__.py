@@ -1,1 +1,1 @@
-"""Format diff to string."""
+"""Format diff to string in requested format."""

@@ -14,3 +14,6 @@
 
 ### Compare two nested files:
 [![asciicast](https://asciinema.org/a/552158.svg)](https://asciinema.org/a/552158)
+
+### Compare two files and get diff in plain format:
+[![asciicast](https://asciinema.org/a/552899.svg)](https://asciinema.org/a/552899)
