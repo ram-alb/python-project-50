@@ -1,7 +1,7 @@
 """Generate diff from two files in different formats."""
 
 from gendiff.compare import compare_dicts
-from gendiff.formatters.formatter import format_diff
+from gendiff.formatter import format_diff
 from gendiff.parser import parse_file
 
 

@@ -1,8 +1,8 @@
 """Format diff according to formatter type."""
 
+from gendiff.formatters.json import json_format
 from gendiff.formatters.plain import plain
 from gendiff.formatters.stylish import stylish
-from gendiff.formatters.json import json_format
 
 
 def format_diff(diff, formatter_type):
