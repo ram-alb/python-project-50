@@ -16,8 +16,9 @@ def format_diff(diff, formatter_type):
     Returns:
         str
     """
-    if formatter_type == 'plain':
-        return plain(diff)
-    elif formatter_type == 'json':
-        return json_format(diff)
-    return stylish(diff)
+    formatters = {
+        'plain': plain,
+        'json': json_format,
+        'stylish': stylish,
+    }
+    return formatters[formatter_type](diff)
