@@ -43,7 +43,12 @@ def parse_file(file_path):
     Returns:
         dict
     """
-    supported_extensions = ('.json', '.yml', '.yaml')
+    parsers = {
+        '.json': parse_json,
+        '.yml': parse_yaml,
+        '.yaml': parse_yaml,
+    }
+    supported_extensions = parsers.keys()
 
     file_path_obj = pathlib.Path(file_path)
     file_abs_path = file_path_obj.resolve()
@@ -54,12 +59,6 @@ def parse_file(file_path):
             f'Unsupported file type: "{file_extension}". '
             f'Supported file types: {", ".join(supported_extensions)}'
         )
-
-    parsers = {
-        '.json': parse_json,
-        '.yaml': parse_yaml,
-        '.yml': parse_yaml,
-    }
 
     with open(file_abs_path) as file_obj:
         return parsers[file_extension](file_obj)
