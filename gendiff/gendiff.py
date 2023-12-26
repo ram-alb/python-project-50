@@ -1,8 +1,29 @@
 """Generate diff from two files in different formats."""
 
 from gendiff.compare import compare_dicts
-from gendiff.formatter import format_diff
+from gendiff.formatters.json import json_format
+from gendiff.formatters.plain import plain
+from gendiff.formatters.stylish import stylish
 from gendiff.parser import parse_file
+
+
+def format_diff(diff, formatter_type):
+    """
+    Format diff according to formatter type.
+
+    Args:
+        diff (list): diff of two dictionaries
+        formatter_type (str): format type for diff
+
+    Returns:
+        str
+    """
+    formatters = {
+        'plain': plain,
+        'json': json_format,
+        'stylish': stylish,
+    }
+    return formatters[formatter_type](diff)
 
 
 def generate_diff(file1_path, file2_path, formatter_type='stylish'):
