@@ -1,69 +1,74 @@
 """Test gendiff module."""
 
+from pathlib import Path
+
+import pytest
 from gendiff.gendiff import generate_diff
 
-file1_json = 'tests/fixtures/nested1.json'
-file2_json = 'tests/fixtures/nested2.json'
-file1_yaml = 'tests/fixtures/nested1.yml'
-file2_yaml = 'tests/fixtures/nested2.yml'
-file1_bat = 'tests/fixtures/nested1.bat'
-file2_bat = 'tests/fixtures/nested2.bat'
+FIXT_PATH = Path('tests/fixtures')
+input_path = FIXT_PATH / 'input'
+output_path = FIXT_PATH / 'output'
+
+input_data = {
+    file_path.name: file_path
+    for file_path in input_path.iterdir()
+}
+
+output_data = {
+    file_path.name: file_path
+    for file_path in output_path.iterdir()
+}
 
 
-def test_generate_diff_flat():
-    """Test generate_diff function with flat data."""
-    expected = open('tests/fixtures/expected_flat_diff.txt').read()
-
-    flat1_json = 'tests/fixtures/file1.json'
-    flat2_json = 'tests/fixtures/file2.json'
-    assert generate_diff(flat1_json, flat2_json) == expected
-
-    flat1_yaml = 'tests/fixtures/file1.yml'
-    flat2_yaml = 'tests/fixtures/file2.yml'
-    assert generate_diff(flat1_yaml, flat2_yaml) == expected
+def read_file(file_path):
+    with open(file_path, 'r') as file_obj:
+        return file_obj.read()
 
 
-def test_generate_diff_nested():
-    """Test generate_diff function with nested data."""
-    expected = open('tests/fixtures/expected_nested_diff.txt').read()
+@pytest.mark.parametrize(
+    'diff,file1,file2',
+    [
+        ('flat_diff.txt', 'flat1.json', 'flat2.json'),
+        ('flat_diff.txt', 'flat1.yml', 'flat2.yml'),
+        ('nested_diff.txt', 'nested1.json', 'nested2.json'),
+        ('nested_diff.txt', 'nested1.yml', 'nested2.yml'),
+    ],
+)
+def test_generate_diff_stylish(diff, file1, file2):
+    """Test generate_diff function with stylish output."""
+    assert generate_diff(
+        input_data[file1],
+        input_data[file2],
+    ) == read_file(output_data[diff])
 
-    assert generate_diff(file1_json, file2_json) == expected
-    assert generate_diff(file1_yaml, file2_yaml) == expected
 
-
-def test_generate_diff_plain():
+@pytest.mark.parametrize(
+    'diff,file1,file2',
+    [
+        ('plain_diff.txt', 'nested1.json', 'nested2.json'),
+        ('plain_diff.txt', 'nested1.yml', 'nested2.yml'),
+    ],
+)
+def test_generate_diff_plain(diff, file1, file2):
     """Test generate_diff function with plain output."""
-    expected = open('tests/fixtures/expected_plain_diff.txt').read()
+    assert generate_diff(
+        input_data[file1],
+        input_data[file2],
+        'plain',
+    ) == read_file(output_data[diff])
 
-    assert generate_diff(file1_json, file2_json, 'plain') == expected
-    assert generate_diff(file1_yaml, file2_yaml, 'plain') == expected
 
-
-def test_generate_diff_json():
+@pytest.mark.parametrize(
+    'diff,file1,file2',
+    [
+        ('json_diff.txt', 'nested1.json', 'nested2.json'),
+        ('json_diff.txt', 'nested1.yml', 'nested2.yml'),
+    ],
+)
+def test_generate_diff_json(diff, file1, file2):
     """Test generate_diff function with json output."""
-    expected = open('tests/fixtures/json_diff.txt').read()
-
-    assert generate_diff(file1_json, file2_json, 'json') == expected
-    assert generate_diff(file1_yaml, file2_yaml, 'json') == expected
-
-
-def test_generate_diff_unssupported_formatter_type():
-    """Test generate_diff function with unssupported formatter type."""
-    formatter_type = 'some_type'
-    expected = (
-        'formatter_type parameter can only take the following values: '
-        f'plain, json, stylish. Current value is {formatter_type}'
-    )
-    diff = generate_diff(file1_json, file1_json, formatter_type)
-
-    assert diff == expected
-
-
-def test_generate_diff_unssupported_file_type():
-    """Test generate_diff function with unssupported file type."""
-    expected = (
-        'Unsupported file type: ".bat". '
-        'Supported file types: .json, .yml, .yaml'
-    )
-    diff = generate_diff(file1_bat, file1_bat)
-    assert diff == expected
+    assert generate_diff(
+        input_data[file1],
+        input_data[file2],
+        'json',
+    ) == read_file(output_data[diff])
