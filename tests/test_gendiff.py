@@ -29,7 +29,7 @@ def read_file(file_path):
     'diff,file1,file2',
     [
         ('flat_diff.txt', 'flat1.json', 'flat2.json'),
-        ('flat_diff.txt', 'flat1.yml', 'flat2.yml'),
+        ('flat_diff.txt', 'flat1.yaml', 'flat2.yaml'),
         ('nested_diff.txt', 'nested1.json', 'nested2.json'),
         ('nested_diff.txt', 'nested1.yml', 'nested2.yml'),
     ],
